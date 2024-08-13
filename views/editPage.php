@@ -24,7 +24,6 @@
         </thead>
         <tbody>
             <?php
-            // TODO: Добавить доп строки с краткой историей, местом проживания, любимым оружием
             require_once __DIR__ . '/../classes/mysqliClasses.php';
 
             if (isset($_GET['character_id'])) {

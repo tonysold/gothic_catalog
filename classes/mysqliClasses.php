@@ -22,7 +22,9 @@ class DB_con
     {
         switch ($_POST['table']) {
             case 'characters':
-                $showQuery = mysqli_query($this->dbh, "SELECT * FROM characters LEFT JOIN belongs ON characters.belong_id = belongs.id LEFT JOIN jobs ON characters.job_id = jobs.id");
+                $showQuery = mysqli_query($this->dbh, "SELECT * FROM characters 
+                LEFT JOIN belongs ON characters.belong_id = belongs.id 
+                LEFT JOIN jobs ON characters.job_id = jobs.id");
                 return $showQuery;
                 break;
             case 'weapons':
@@ -74,10 +76,33 @@ class DB_con
             echo "Недопустимые символы в имени пользователя или короткое имя";
             return false;
         }
-        //Data one record read Function
+    }
+    //Data one record read Function
 
-        //Data updation Function
+    //Data updation Function
 
-        //Data Deletion function Function
+    //User login
+
+    public function loginUser()
+    {
+        $userName = $_POST['username'];
+        $userPass = $_POST['password'];
+
+        $checkQuery = mysqli_prepare($this->dbh, "SELECT * FROM users WHERE user_name=? AND user_pass=?");
+        mysqli_stmt_bind_param($checkQuery, "ss", $userName, $userPass);
+        mysqli_stmt_execute($checkQuery);
+        $result = mysqli_stmt_get_result($checkQuery);
+
+        if(mysqli_num_rows($result) > 0) {
+            $userData = mysqli_fetch_assoc($result);
+            echo 'Пользователь найден';
+            return true;
+        }
+        else {
+            echo 'Неправильный логин или пароль';
+            return false;
+        }
+
+
     }
 }

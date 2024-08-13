@@ -36,3 +36,22 @@ body {
 .registration a:hover {
     background-color: rgb(164, 124, 23);
 }
+
+/*пока не работает*/
+.autentification {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+}
+
+.autentification a {
+    text-decoration: none;
+    background-color: darkgoldenrod;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.autentification a:hover {
+    background-color: rgb(164, 124, 23);
+}

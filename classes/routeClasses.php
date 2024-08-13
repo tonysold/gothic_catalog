@@ -67,4 +67,12 @@ $route->get('/edit', function() {
     require_once 'views/editPage.php';
 });
 
+$route->get('/autentification', function(){
+    require_once 'views/autentification.php';
+});
+
+$route->post('/autentification', function(){
+    require_once 'views/autentification.php';
+});
+
 $route->handleRequest();
