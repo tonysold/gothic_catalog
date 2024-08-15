@@ -33,14 +33,15 @@
     </div>
     <?php
     require_once __DIR__ . '/../classes/mysqliClasses.php';
+    require_once __DIR__ . '/../classes/sessionClasses.php';
 
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $autentification = new DB_con;
         $autentification->loginUser();
+        print_r($_SESSION['user_data']);
     } else {
-        echo 'Введите данные';
+        echo 'Введите все данные';
     }
-    print_r($_POST);
     ?>
 
 </body>

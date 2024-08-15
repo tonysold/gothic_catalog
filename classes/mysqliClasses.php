@@ -1,6 +1,4 @@
 <?php
-// !!!!!! пока что сессия выключена !!!!!!
-//session_start();
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'dobr');
 define('DB_PASS', 'risenovsky');
@@ -66,6 +64,7 @@ class DB_con
                 echo 'Пользователь с таким именем существует';
                 return false;
             } else {
+                //TODO: Добавить хэширование паролей
                 $addUserQuery = mysqli_prepare($this->dbh, "INSERT INTO users(user_name, user_pass) values (?, ?)");
                 mysqli_stmt_bind_param($addUserQuery, "ss", $userName, $userPass);
                 mysqli_stmt_execute($addUserQuery);
@@ -85,6 +84,7 @@ class DB_con
 
     public function loginUser()
     {
+        require_once __DIR__ . '/../classes/sessionClasses.php';
         $userName = $_POST['username'];
         $userPass = $_POST['password'];
 
@@ -93,16 +93,15 @@ class DB_con
         mysqli_stmt_execute($checkQuery);
         $result = mysqli_stmt_get_result($checkQuery);
 
-        if(mysqli_num_rows($result) > 0) {
+        if (mysqli_num_rows($result) > 0) {
             $userData = mysqli_fetch_assoc($result);
-            echo 'Пользователь найден';
+            echo "Пользователь с именем $userName найден";
             return true;
-        }
-        else {
+            $session = new Session();
+            $session->setUserData($userData);
+        } else {
             echo 'Неправильный логин или пароль';
             return false;
         }
-
-
     }
 }
