@@ -96,9 +96,9 @@ class DB_con
         if (mysqli_num_rows($result) > 0) {
             $userData = mysqli_fetch_assoc($result);
             echo "Пользователь с именем $userName найден";
-            return true;
             $session = new Session();
             $session->setUserData($userData);
+            return true;
         } else {
             echo 'Неправильный логин или пароль';
             return false;

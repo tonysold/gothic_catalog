@@ -38,9 +38,13 @@
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $autentification = new DB_con;
         $autentification->loginUser();
-        print_r($_SESSION['user_data']);
     } else {
         echo 'Введите все данные';
+    }
+    if ($autentification == true) 
+    {
+        $_SESSION['login_success'] = true;
+        header('Location: tables');
     }
     ?>
 

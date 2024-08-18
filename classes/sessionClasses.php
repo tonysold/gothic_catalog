@@ -1,12 +1,27 @@
 <?php
-class Session {
-    public function __construct() {
+class Session
+{
+    private $userToken;
+    public function __construct()
+    {
         session_start();
     }
 
-    public function setUserData($userData) {
+    public function setUserData($userData)
+    {
         $_SESSION['user_data'] = $userData;
-        print_r($_SESSION['user_data']);
+        $this->userToken = $_SESSION['user_data'];
+        return $this->userToken;
+    }
+
+    public function test()
+    {
+        print_r($this->userToken);
+    }
+
+    public function logout()
+    {
+        session_destroy();
     }
 
     // public function test()

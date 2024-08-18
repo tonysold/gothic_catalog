@@ -1,5 +1,9 @@
 <?php
 $selectedTable = $_POST['table'] ?? 0; //добавил ноль чтобы не вылезал ворнинг
+if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
+    echo "Вы успешно вошли!";
+    unset($_SESSION['login_success']);
+}
 ?>
 
 <!DOCTYPE html>
