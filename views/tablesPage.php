@@ -20,7 +20,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
     <div class="container">
         <h1>Выбери таблицу</h1>
         <form method="post" action="/tables">
-            <label for="tableSelect">Выберите таблицу:</label>
+            <label for="tableSelect"></label>
             <select id="tableSelect" name="table">
                 <option value="characters" <?php if ($selectedTable == 'characters') echo 'selected'; ?>>Персонажи</option>
                 <option value="camps" <?php if ($selectedTable == 'camps') echo 'selected'; ?>>Лагеря</option>
@@ -51,10 +51,11 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
         ?>
             </tbody>
             </table>
+            <br>
+            <a href="/">На Главную</a>
     </div>
 </body>
 
 </html>
 <?php
         }
-        print_r($_POST);

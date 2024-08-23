@@ -32,7 +32,7 @@
                 while ($row = mysqli_fetch_array($sql)) {
             ?>
                     <tr>
-                        <td><img name="character_image" src="<?php echo $row['character_image']; ?>" width="120" height="240"></td>
+                        <td><img name="character_image" src="<?php echo $row['character_image']; ?>"></td>
                         <td><?php echo htmlspecialchars($row['characters_name']); ?></td>
                         <td><?php echo htmlspecialchars($row['character_id']); ?></td>
                         <td><?php echo htmlspecialchars($row['level']); ?></td>
@@ -44,10 +44,10 @@
         </tbody>
     </table>
     <!-- TODO: Добавить возвращение с пост параметром выбранной таблицы (вероятнее всего через сессию) -->
+     <br>
     <a href="/tables">Вернуться к таблицам</a>
 </body>
 <?php
                 }
             }
-            print_r($_GET);
 ?>
