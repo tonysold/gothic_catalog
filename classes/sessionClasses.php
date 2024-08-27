@@ -2,11 +2,7 @@
 class Session
 {
     private $userToken;
-    public function __construct()
-    {
-        session_start();
-    }
-
+    
     public function setUserData($userData)
     {
         $_SESSION['user_data'] = $userData;

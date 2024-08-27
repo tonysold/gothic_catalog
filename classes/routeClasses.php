@@ -1,6 +1,6 @@
 <?php
 
-namespace classes\route;
+require_once __DIR__ . '/../classes/sessionClasses.php';
 
 class Router
 {
@@ -44,7 +44,7 @@ class Router
 $route = new Router;
 
 $route->get('/', function() {
-    require_once 'views/welcomePage.html';
+    require_once 'views/welcomePage.php';
 });
 
 $route->get('/tables', function() {
@@ -73,6 +73,12 @@ $route->get('/autentification', function(){
 
 $route->post('/autentification', function(){
     require_once 'views/autentification.php';
+});
+
+$route->get('/logout', function() {
+    $session = new Session();
+    $session->logout();
+    require_once 'views/welcomePage.php';
 });
 
 $route->handleRequest();

@@ -16,6 +16,17 @@
         <p>Ты попал на главную страницу каталога Gothic</p>
         <p>Можешь посмотреть <a href="/tables">таблицы</a></p>
         <p>Но если ты что-то знаешь, можешь зарегистрироваться</p>
+        <?php
+        if (isset($_SESSION['user_data'])) {
+            //TODO: Почему-то на выход надо нажимать два раза. Позже займусь
+        ?>
+        <div class="logout">
+            <a href="/logout">Выйти</a>
+        </div>
+        <?php
+        }
+        else {
+        ?>
     </div>
     <div class="registration">
         <a href="/registration">Зарегистрироваться</a>
@@ -23,6 +34,7 @@
     <div class="autentification">
         <a href="/autentification">Войти</a>
     </div>
+    <?php } ?>
 </body>
 
 </html>

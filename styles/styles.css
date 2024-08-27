@@ -54,3 +54,21 @@ body {
 .autentification a:hover {
     background-color: rgb(164, 124, 23);
 }
+
+.logout {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout a {
+    text-decoration: none;
+    background-color: darkgoldenrod;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.logout a:hover {
+    background-color: rgb(164, 124, 23);
+}
