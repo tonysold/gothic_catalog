@@ -22,7 +22,8 @@ class DB_con
             case 'characters':
                 $showQuery = mysqli_query($this->dbh, "SELECT * FROM characters 
                 LEFT JOIN belongs ON characters.belong_id = belongs.id 
-                LEFT JOIN jobs ON characters.job_id = jobs.id");
+                LEFT JOIN jobs ON characters.job_id = jobs.id
+                ORDER BY characters_name ASC");
                 return $showQuery;
                 break;
             case 'weapons':

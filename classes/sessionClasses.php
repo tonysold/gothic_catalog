@@ -17,7 +17,9 @@ class Session
 
     public function logout()
     {
+        unset ($_SESSION['user_data']);
         session_destroy();
+        echo "Вы вышли.";
     }
 
     // public function test()

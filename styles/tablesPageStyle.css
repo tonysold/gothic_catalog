@@ -12,10 +12,11 @@ body {
   }
   
   .container {
-    width: 800px;
+    width: 1000px;
     margin: auto;
     padding: 20px;
   }
+  
   
   .container h1 {
     text-align: center;

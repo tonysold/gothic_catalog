@@ -13,7 +13,7 @@
         $showGothic = new DB_con;
         //метод Show all показывает все данные из таблицы charcters 
         //в дальнейшем метод будет показывать   и другие таблицы в зависимости от кейса
-        $sql = $showGothic->showAll();
+        $sql = $showGothic->showAll("ORDER BY characters_name ASC");
         $cnt = 1;
         while ($row = mysqli_fetch_array($sql)) {
         ?>

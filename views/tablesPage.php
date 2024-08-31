@@ -57,5 +57,8 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
 </body>
 
 </html>
+<pre>
 <?php
+print_r ($_SESSION);
+print_r ($_POST);
         }
