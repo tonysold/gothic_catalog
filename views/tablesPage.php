@@ -48,6 +48,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
                     require_once 'weaponsTable.php';
                     break;
             }
+        }
         ?>
             </tbody>
             </table>
@@ -61,4 +62,4 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
 <?php
 print_r ($_SESSION);
 print_r ($_POST);
-        }
+        

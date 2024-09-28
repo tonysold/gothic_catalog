@@ -47,7 +47,7 @@
         header('Location: tables');
     }
     ?>
-
+<a href="/">На Главную</a>
 </body>
 
 </html>

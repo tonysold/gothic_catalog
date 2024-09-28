@@ -42,9 +42,9 @@
     } else {
         echo 'Введите данные';
     }
-    print_r($_POST);
     ?>
-
+    <br>
+    <a href="/">На Главную</a>
 </body>
 
 </html>
