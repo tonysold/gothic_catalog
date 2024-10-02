@@ -1,46 +1,45 @@
 <?php
+
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'dobr');
 define('DB_PASS', 'risenovsky');
 define('DB_NAME', 'gothic');
-
-try {
-    $dsn = 'mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME;
-    $pdo = new PDO($dsn, DB_USER, DB_PASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo 'Ошибка подключения к базе данных: ' . $e->getMessage();
-    exit;
-}
-
 class DB_con
 {
     private $dbh;
 
-    public function __construct(PDO $pdo) {
-        $this->dbh = $pdo;
+    function __construct()
+    {
+        try {
+            $dsn = 'mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME;
+            $this->dbh = new PDO($dsn, DB_USER, DB_PASS);
+            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Ошибка подключения к базе данных: ' . $e->getMessage();
+            exit;
+        }
     }
 
     public function showAll()
     {
         switch ($_POST['table']) {
             case 'characters':
-                $showQuery = $this->dbh->prepare("SELECT characters.*, belongs.name AS belong_name, jobs.name AS job_name FROM characters 
-            LEFT JOIN belongs ON characters.belong_id = belongs.id 
-            LEFT JOIN jobs ON characters.job_id = jobs.id
-            ORDER BY characters_name ASC");
+                $showQuery =  $this->dbh->prepare("SELECT * FROM characters 
+                LEFT JOIN belongs ON characters.belong_id = belongs.id 
+                LEFT JOIN jobs ON characters.job_id = jobs.id
+                ORDER BY characters_name ASC");
                 $showQuery->execute();
-                return $showQuery->fetchAll(PDO::FETCH_ASSOC);
+                return $showQuery;
                 break;
             case 'weapons':
                 $showQuery = $this->dbh->prepare("SELECT * FROM weapons");
                 $showQuery->execute();
-                return $showQuery->fetchAll(PDO::FETCH_ASSOC);
+                return $showQuery;
                 break;
             case 'camps':
                 $showQuery = $this->dbh->prepare("SELECT * FROM belongs");
                 $showQuery->execute();
-                return $showQuery->fetchAll(PDO::FETCH_ASSOC);
+                return $showQuery;
                 break;
         }
     }
@@ -56,7 +55,7 @@ class DB_con
     WHERE characters.character_id = :character_id");
         $showOneQuery->bindParam(':character_id', $characterid);
         $showOneQuery->execute();
-        return $showOneQuery->fetch(PDO::FETCH_ASSOC);
+        return $showOneQuery;
     }
     public function addUser()
     {

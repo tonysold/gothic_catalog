@@ -29,14 +29,15 @@
             <br>
     </div>
     <div class="btn-container">
+        <input type="hidden" name="register" value="true">
         <button type="submit" class="btn">Зарегистрироваться</button>
     </div>
     </form>
     </div>
     <?php
-    require_once __DIR__ . '/../classes/mysqliClasses.php';
-
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    require_once __DIR__ . '/../classes/pdoClasses.php';
+//TODO: Доделать правильную регистрацию без ошибок
+    if ((isset($_POST['username']) && isset($_POST['password'])) && ($_POST['register'] ==true)) {
         $registration = new DB_con;
         $registration->addUser();
     } else {

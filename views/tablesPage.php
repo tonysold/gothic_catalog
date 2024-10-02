@@ -31,7 +31,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
         </form>
         <?php
         //подключаем классы мускли
-        require_once __DIR__ . '/../classes/mysqliClasses.php';
+        require_once __DIR__ . '/../classes/pdoClasses.php';
 
         //проверяем на сабмит, если сабмит был, выводим таблицы
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
