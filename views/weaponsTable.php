@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <?php
-        $showGothic = new DB_con;
+        $showGothic = new DatabaseConnection;
         $statement = $showGothic->showAll();
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         ?>

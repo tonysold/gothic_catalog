@@ -4,7 +4,7 @@ define('DB_SERVER', 'localhost');
 define('DB_USER', 'dobr');
 define('DB_PASS', 'risenovsky');
 define('DB_NAME', 'gothic');
-class DB_con
+class DatabaseConnection
 {
     private $dbh;
 
@@ -87,7 +87,6 @@ class DB_con
 
     public function loginUser()
     {
-        require_once __DIR__ . '/../classes/sessionClasses.php';
         $userName = $_POST['username'];
         $userPass = $_POST['password'];
 
@@ -100,7 +99,7 @@ class DB_con
         if (count($result) > 0) {
             $userData = $result[0];
             echo "Пользователь с именем $userName найден";
-            $session = new Session();
+            $session = new Session;
             $session->setUserData($userData);
             return true;
         } else {
@@ -108,5 +107,5 @@ class DB_con
             return false;
         }
     }
-    // Другие методы класса DB_con
+    // Другие методы класса DatabaseConnection
 }

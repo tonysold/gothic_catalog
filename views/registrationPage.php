@@ -35,13 +35,13 @@
     </form>
     </div>
     <?php
-    require_once __DIR__ . '/../classes/pdoClasses.php';
-//TODO: Доделать правильную регистрацию без ошибок
-    if ((isset($_POST['username']) && isset($_POST['password'])) && ($_POST['register'] ==true)) {
-        $registration = new DB_con;
-        $registration->addUser();
-    } else {
-        echo 'Введите данные';
+    if (isset($_POST['register']) && ($_POST['register'] == true)) {
+        if (empty($_POST['username']) && empty($_POST['password'])) {
+            echo 'Введите данные';
+        } else {
+            $registration = new DatabaseConnection;
+            $registration->addUser();
+        }
     }
     ?>
     <br>

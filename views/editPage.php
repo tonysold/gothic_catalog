@@ -25,10 +25,8 @@
             </thead>
             <tbody>
                 <?php
-                require_once __DIR__ . '/../classes/pdoClasses.php';
-
                 if (isset($_GET['character_id'])) {
-                    $showOneGothic = new DB_con;
+                    $showOneGothic = new DatabaseConnection;
                     $statement = $showOneGothic->showOne();
                     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                 ?>

@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <?php
-        $showGothic = new DB_con;
+        $showGothic = new DatabaseConnection;
         //метод Show all показывает все данные из таблицы charcters 
         //в дальнейшем метод будет показывать   и другие таблицы в зависимости от кейса
         $statement = $showGothic->showAll();
